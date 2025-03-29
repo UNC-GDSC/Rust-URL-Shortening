@@ -1,4 +1,3 @@
-```markdown
 # Rust URL Shortener Service
 
 A full‑stack URL shortening service built entirely in **Rust** using Actix‑web and Diesel with SQLite. This service allows users to:

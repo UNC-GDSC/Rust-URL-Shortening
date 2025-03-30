@@ -1,5 +1,11 @@
 # Rust URL Shortener Service
 
+[![Rust Version](https://img.shields.io/badge/Rust-1.56+-orange.svg)](https://www.rust-lang.org)
+[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue.svg?logo=postgresql&logoColor=white)](#)
+[![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1.svg?logo=mysql&logoColor=white)](#)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-lightgrey.svg?logo=sqlite&logoColor=blue)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 A full‑stack URL shortening service built entirely in **Rust** using Actix‑web and Diesel with SQLite. This service allows users to:
 
 - **Create Short URLs:** Submit a long URL and receive a unique, shortened URL.

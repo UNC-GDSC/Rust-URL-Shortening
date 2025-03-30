@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: rust-url-shortener
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: "rust_url_shortener.db"
+      BASE_URL: "http://localhost:8080"
+    volumes:
+      # If you need persistent storage for SQLite file
+      - ./rust_url_shortener.db:/app/rust_url_shortener.db
+    depends_on:
+      - db
+
+  db:
+    image: nouchka/sqlite3 # A minimal SQLite container
+    container_name: sqlite-container
+    volumes:
+      - ./rust_url_shortener.db:/data/sqlite.db
+    command: ["sqlite3", "/data/sqlite.db"]

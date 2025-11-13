@@ -6,3 +6,23 @@
 *.iml
 out
 gen
+
+# Rust
+target/
+**/*.rs.bk
+*.pdb
+
+# Environment files
+.env
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

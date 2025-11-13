@@ -85,3 +85,21 @@ pub async fn redirect_handler(
         _ => HttpResponse::NotFound().body("URL not found"),
     }
 }
+
+/// Health check endpoint for monitoring and load balancers.
+/// Returns server status and database connectivity.
+pub async fn health_check_handler(pool: web::Data<DbPool>) -> impl Responder {
+    // Try to get a database connection to verify database health
+    match pool.get() {
+        Ok(_) => HttpResponse::Ok().json(serde_json::json!({
+            "status": "healthy",
+            "database": "connected",
+            "timestamp": chrono::Utc::now().to_rfc3339()
+        })),
+        Err(_) => HttpResponse::ServiceUnavailable().json(serde_json::json!({
+            "status": "unhealthy",
+            "database": "disconnected",
+            "timestamp": chrono::Utc::now().to_rfc3339()
+        })),
+    }
+}

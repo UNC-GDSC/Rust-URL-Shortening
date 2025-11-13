@@ -36,6 +36,11 @@ log = "0.4"
 [dev-dependencies]
 reqwest = { version = "0.11", features = ["json"] }
 tokio = { version = "1", features = ["full"] }
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "url_generation"
+harness = false
 
 [profile.release]
 opt-level = 3

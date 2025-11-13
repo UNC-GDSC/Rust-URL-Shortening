@@ -1,35 +1,17 @@
+# PostgreSQL-specific Docker Compose configuration
+# Usage: docker-compose -f docker-compose.postgres.yml up
+
 version: "3.9"
 
 services:
-  # SQLite-based deployment (default, simpler setup)
-  app-sqlite:
+  app:
     build: .
-    container_name: rust-url-shortener-sqlite
+    container_name: rust-url-shortener
     ports:
       - "8080:8080"
     environment:
-      DATABASE_URL: "rust_url_shortener.db"
-      BASE_URL: "http://localhost:8080"
-      RUST_LOG: "info"
-    volumes:
-      - ./data:/data
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    restart: unless-stopped
-
-  # PostgreSQL-based deployment (production-ready, scalable)
-  app-postgres:
-    build: .
-    container_name: rust-url-shortener-postgres
-    ports:
-      - "8081:8080"
-    environment:
       DATABASE_URL: "postgres://urlshort:urlshort@postgres:5432/urlshortener"
-      BASE_URL: "http://localhost:8081"
+      BASE_URL: "http://localhost:8080"
       RUST_LOG: "info"
     depends_on:
       postgres:
@@ -41,7 +23,8 @@ services:
       retries: 3
       start_period: 40s
     restart: unless-stopped
-    profiles: ["postgres"]
+    networks:
+      - app-network
 
   postgres:
     image: postgres:15-alpine
@@ -50,17 +33,23 @@ services:
       POSTGRES_USER: urlshort
       POSTGRES_PASSWORD: urlshort
       POSTGRES_DB: urlshortener
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U urlshort"]
+      test: ["CMD-SHELL", "pg_isready -U urlshort -d urlshortener"]
       interval: 10s
       timeout: 5s
       retries: 5
     ports:
       - "5432:5432"
     restart: unless-stopped
-    profiles: ["postgres"]
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   postgres_data:

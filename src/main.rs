@@ -1,10 +1,15 @@
 #[macro_use]
 extern crate diesel;
 
+mod config;
 mod db;
+mod error;
+mod handlers;
+mod loggers;
 mod models;
 mod routes;
 mod schema;
+mod utils;
 
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use db::establish_connection_pool;

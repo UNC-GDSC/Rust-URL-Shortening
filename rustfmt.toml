@@ -1,0 +1,86 @@
+# Rust Formatting Configuration
+# See https://rust-lang.github.io/rustfmt/ for options
+
+# Maximum line width
+max_width = 100
+
+# Use hard tabs
+hard_tabs = false
+
+# Number of spaces per tab
+tab_spaces = 4
+
+# Brace style for items
+brace_style = "SameLineWhere"
+
+# Where to put the opening brace of functions
+fn_brace_style = "SameLineWhere"
+
+# Where to put the opening brace of impls
+impl_brace_style = "SameLineWhere"
+
+# Indentation of control flow statements
+control_brace_style = "AlwaysSameLine"
+
+# Format string literals where necessary
+format_strings = true
+
+# Format code in doc comments
+format_code_in_doc_comments = true
+
+# Merge imports
+imports_granularity = "Crate"
+
+# Group imports
+group_imports = "StdExternalCrate"
+
+# Reorder imports
+reorder_imports = true
+
+# Reorder modules
+reorder_modules = true
+
+# Use field init shorthand
+use_field_init_shorthand = true
+
+# Use try shorthand
+use_try_shorthand = true
+
+# Force explicit types where possible
+force_explicit_abi = true
+
+# Remove nested parens
+remove_nested_parens = true
+
+# Edition
+edition = "2021"
+
+# Newline style
+newline_style = "Unix"
+
+# Trailing comma
+trailing_comma = "Vertical"
+
+# Match block trailing comma
+match_block_trailing_comma = true
+
+# Blank lines: max consecutive
+blank_lines_upper_bound = 1
+
+# Combine control expressions
+combine_control_expr = true
+
+# Struct field alignment
+struct_field_align_threshold = 20
+
+# Comment width
+comment_width = 80
+
+# Wrap comments
+wrap_comments = true
+
+# Error on line overflow
+error_on_line_overflow = false
+
+# Error on unformatted files
+error_on_unformatted = false

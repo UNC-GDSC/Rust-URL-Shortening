@@ -1,7 +1,7 @@
 # =========================================
 # Stage 1 - Build the application
 # =========================================
-FROM rust:1.69 as builder
+FROM rust:1.91 as builder
 
 # Create a new empty shell project
 RUN USER=root cargo new --bin rust-url-shortener

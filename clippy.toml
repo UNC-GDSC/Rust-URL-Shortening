@@ -1,0 +1,42 @@
+# Clippy Configuration
+# See https://rust-lang.github.io/rust-clippy/master/index.html for all lints
+
+# Cognitive complexity threshold
+cognitive-complexity-threshold = 15
+
+# Too many arguments threshold
+too-many-arguments-threshold = 7
+
+# Too many lines threshold
+too-many-lines-threshold = 200
+
+# Type complexity threshold
+type-complexity-threshold = 250
+
+# Single char binding threshold
+single-char-binding-names-threshold = 4
+
+# Allow expects and unwraps in tests
+allow-expect-in-tests = true
+allow-unwrap-in-tests = true
+
+# Allow dbg! macro in tests
+allow-dbg-in-tests = true
+
+# Allow print statements in tests
+allow-print-in-tests = true
+
+# Maximum function length
+max-fn-params-bools = 3
+
+# Enum variant size threshold
+enum-variant-size-threshold = 200
+
+# Struct field alignment
+struct-excessive-bools = 3
+
+# Warn on missing documentation
+missing-docs-in-public-items = false
+
+# Warn on TODO comments
+todo-in-tests = false
